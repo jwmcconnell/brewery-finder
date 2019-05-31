@@ -3,13 +3,25 @@ import Header from './Header.js';
 import BreweryList from './BreweryList.js';
 import Map from './Map.js';
 
+import breweryApi from '../services/brewery-api.js';
+
 class App extends Component {
   render() {
     const dom = this.renderDOM();
 
     const header = new Header();
-    const breweryList = new BreweryList();
+    const breweryList = new BreweryList({ breweries: [] });
     const map = new Map();
+
+    function loadBreweries() {
+
+      breweryApi.getBreweries()
+        .then(breweries => {
+          breweryList.update({ breweries });
+        });
+    }
+
+    loadBreweries();
 
     const main = dom.querySelector('main');
 

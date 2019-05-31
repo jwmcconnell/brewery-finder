@@ -5,7 +5,7 @@ class BreweryItem extends Component {
     const brewery = this.props.brewery;
     return /*html*/ `
       <li>
-        <h2>Arlington Club</h2>
+        <h2>${brewery.name}</h2>
         <section>
           <span>Type:</span>
           <span>${brewery.brewery_type}</span>

@@ -28,6 +28,11 @@ main {
   height: 90%;
 }
 
+ul {
+  height: 80%;
+  overflow-y: auto;
+}
+
 #app, #app div {
   height: 100%;
 }
