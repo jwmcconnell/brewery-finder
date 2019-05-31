@@ -1,4 +1,5 @@
 import Component from './Component.js';
+import hashStorage from '../services/hash-storage.js';
 
 class Search extends Component {
   render() {
@@ -7,9 +8,11 @@ class Search extends Component {
 
     form.addEventListener('submit', event => {
       event.preventDefault();
-      const searchParams = new URLSearchParams();
-      searchParams.set('search', input.value);
-      window.location.hash = searchParams.toString();
+      const queryProps = {
+        city: input.value
+      };
+      queryProps.page = 1;
+      hashStorage.set(queryProps);
     });
 
     window.addEventListener('hashchange', () => {
@@ -17,10 +20,10 @@ class Search extends Component {
     });
 
     function setInputFromHash() {
-      const params = window.location.hash.slice(1);
-      const searchParams = new URLSearchParams(params);
-      const search = searchParams.get('search');
-      input.value = search;
+      const city = hashStorage.get().city;
+      if(city) {
+        input.value = city;
+      }
     }
 
     setInputFromHash();
@@ -29,11 +32,11 @@ class Search extends Component {
   }
   renderTemplate() {
     return /*html*/`
-            <form>
-                <input type="text">
-                <button>Submit</button>
-            </form>
-        `;
+      <form>
+          <input type="text">
+          <button>Submit</button>
+      </form>
+    `;
   }
 }
 
