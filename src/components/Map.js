@@ -27,6 +27,11 @@ class Map extends Component {
         gestureHandling: 'cooperative'
       });
 
+      marker.addListener('click', function() {
+        map.setZoom(5);
+        map.setCenter(marker.getPosition());
+      });
+
       latlngbounds.extend(marker.position);
     });
 
