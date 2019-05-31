@@ -1,10 +1,21 @@
 import Component from './Component.js';
+import Header from './Header.js';
 
 class App extends Component {
+  render() {
+    const dom = this.renderDOM();
+
+    const header = new Header();
+
+    dom.prepend(header.render());
+
+    return dom;
+  }
+
   renderTemplate() {
     return /*html*/ `
       <div>
-        <main>Brewery Finder</main>
+        <main></main>
       </div>
     `;
   }
