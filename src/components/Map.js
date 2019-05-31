@@ -8,6 +8,9 @@ class Map extends Component {
 
     let latlngbounds = new google.maps.LatLngBounds();
 
+    let labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    let labelIndex = 0;
+
     let map = new google.maps.Map(dom.querySelector('.map'), {
       zoom: 8
     });
@@ -15,9 +18,10 @@ class Map extends Component {
     breweries.forEach(brewery => {
       let marker = new google.maps.Marker({
         position: {
-          lat: parseInt(brewery.latitude),
-          lng: parseInt(brewery.longitude)
+          lat: parseFloat(brewery.latitude),
+          lng: parseFloat(brewery.longitude)
         },
+        label: labels[labelIndex++ % labels.length],
         map: map,
         title: brewery.name,
         gestureHandling: 'cooperative'
