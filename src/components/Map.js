@@ -20,7 +20,7 @@ class Map extends Component {
         },
         map: map,
         title: brewery.name,
-        label: brewery.name
+        gestureHandling: 'cooperative'
       });
 
       latlngbounds.extend(marker.position);

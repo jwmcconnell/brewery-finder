@@ -36,7 +36,7 @@ class App extends Component {
 
   renderTemplate() {
     return /*html*/ `
-      <div>
+      <div class="main-container">
         <main></main>
       </div>
     `;
