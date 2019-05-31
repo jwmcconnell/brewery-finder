@@ -1,0 +1,50 @@
+[
+  {
+    "id": 5711,
+    "name": "Arlington Club",
+    "brewery_type": "micro",
+    "street": "811 SW Salmon St",
+    "city": "Portland",
+    "state": "Oregon",
+    "postal_code": "97205-3094",
+    "country": "United States",
+    "longitude": "-122.681859641942",
+    "latitude": "45.51786855",
+    "phone": "5032234141",
+    "website_url": "http://www.thearlingtonclub.com",
+    "updated_at": "2018-08-24T15:45:50.469Z",
+    "tag_list": []
+  },
+  {
+    "id": 5758,
+    "name": "Cascade Brewing Barrel House",
+    "brewery_type": "micro",
+    "street": "939 SE Belmont St",
+    "city": "Portland",
+    "state": "Oregon",
+    "postal_code": "97214-2519",
+    "country": "United States",
+    "longitude": "-122.656005749976",
+    "latitude": "45.5167536",
+    "phone": "5032658603",
+    "website_url": "http://www.cascadebrewing.com",
+    "updated_at": "2018-08-24T15:46:08.535Z",
+    "tag_list": []
+  },
+  {
+    "id": 5933,
+    "name": "Scout Beer",
+    "brewery_type": "micro",
+    "street": "1516 SE 10th Ave",
+    "city": "Portland",
+    "state": "Oregon",
+    "postal_code": "97214-3585",
+    "country": "United States",
+    "longitude": "-122.655590489796",
+    "latitude": "45.5120189183673",
+    "phone": "5032064735",
+    "website_url": "http://www.scoutpdx.com",
+    "updated_at": "2018-08-24T15:47:12.443Z",
+    "tag_list": []
+  }
+]
