@@ -4,6 +4,9 @@ body {
   font-family: 'Roboto', sans-serif;
   margin: 0;
   background: lightgrey;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  height: 100vh;
 }
 
 header {
@@ -11,10 +14,21 @@ header {
   background: black;
   color: lightcyan;
   text-align: center;
+  height: 10%;
 }
 
 header h1 {
   margin: 0;
-  padding: 10px;
   font-size: 2.5em;
 }
+
+main {
+  display: flex;
+  position: relative;
+  height: 90%;
+}
+
+#app, #app div {
+  height: 100%;
+}
+
