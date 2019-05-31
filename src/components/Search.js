@@ -9,7 +9,7 @@ class Search extends Component {
     form.addEventListener('submit', event => {
       event.preventDefault();
       const queryProps = {
-        city: input.value
+        by_city: input.value
       };
       queryProps.page = 1;
       hashStorage.set(queryProps);
@@ -20,9 +20,9 @@ class Search extends Component {
     });
 
     function setInputFromHash() {
-      const city = hashStorage.get().city;
-      if(city) {
-        input.value = city;
+      const by_city = hashStorage.get().by_city;
+      if(by_city) {
+        input.value = by_city;
       }
     }
 
