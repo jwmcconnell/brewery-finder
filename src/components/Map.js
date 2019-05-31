@@ -6,15 +6,14 @@ class Map extends Component {
 
     const breweries = this.props.breweries;
 
-    var myLatLng = { lat: -25.363, lng: 131.044 };
+    let latlngbounds = new google.maps.LatLngBounds();
 
     let map = new google.maps.Map(dom.querySelector('.map'), {
-      center: myLatLng,
       zoom: 8
     });
 
     breweries.forEach(brewery => {
-      new google.maps.Marker({
+      let marker = new google.maps.Marker({
         position: {
           lat: parseInt(brewery.latitude),
           lng: parseInt(brewery.longitude)
@@ -23,7 +22,12 @@ class Map extends Component {
         title: brewery.name,
         label: brewery.name
       });
+
+      latlngbounds.extend(marker.position);
     });
+
+    map.setCenter(latlngbounds.getCenter());
+    map.fitBounds(latlngbounds);
 
     return dom;
   }
