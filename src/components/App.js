@@ -11,13 +11,14 @@ class App extends Component {
 
     const header = new Header();
     const breweryList = new BreweryList({ breweries: [] });
-    const map = new Map();
+    const map = new Map({ breweries: [] });
 
     function loadBreweries() {
 
       breweryApi.getBreweries()
         .then(breweries => {
           breweryList.update({ breweries });
+          map.update({ breweries });
         });
     }
 
