@@ -24,7 +24,6 @@ class Map extends Component {
     return /*html*/ `
     <div class="map-container">
       <div class="map"></div>
-      
     </div>
     `;
   }
