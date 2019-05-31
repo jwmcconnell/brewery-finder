@@ -2,6 +2,7 @@ import Component from './Component.js';
 import Header from './Header.js';
 import BreweryList from './BreweryList.js';
 import Map from './Map.js';
+import Search from './Search.js';
 
 import breweryApi from '../services/brewery-api.js';
 
@@ -12,6 +13,7 @@ class App extends Component {
     const header = new Header();
     const breweryList = new BreweryList({ breweries: [] });
     const map = new Map({ breweries: [] });
+    const search = new Search();
 
     function loadBreweries() {
 
@@ -24,11 +26,18 @@ class App extends Component {
 
     loadBreweries();
 
+    window.addEventListener('hashchange', () => {
+      loadBreweries();
+    });
+
     const main = dom.querySelector('main');
+    const listContainer = dom.querySelector('.list-container');
 
     dom.prepend(header.render());
 
-    main.appendChild(breweryList.render());
+    listContainer.appendChild(search.render());
+    listContainer.appendChild(breweryList.render());
+
     main.appendChild(map.render());
 
     return dom;
@@ -37,7 +46,9 @@ class App extends Component {
   renderTemplate() {
     return /*html*/ `
       <div class="main-container">
-        <main></main>
+        <main>
+          <section class="list-container"></section>
+        </main>
       </div>
     `;
   }
