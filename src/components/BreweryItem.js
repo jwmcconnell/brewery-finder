@@ -19,7 +19,7 @@ class BreweryItem extends Component {
           <span>State:</span>
           <span>${brewery.state}</span>
         </section>
-        <section>
+        <section class=${!brewery.street ? 'hidden' : ''}>
           <span>Address:</span>
           <span>${brewery.street}</span>
         </section>

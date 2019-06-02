@@ -40,7 +40,7 @@ test('Makes Brewery Item from template', assert => {
         <span>State:</span>
         <span>Oregon</span>
       </section>
-      <section>
+      <section class=>
         <span>Address:</span>
         <span>811 SW Salmon St</span>
       </section>
