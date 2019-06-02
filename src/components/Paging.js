@@ -32,14 +32,14 @@ class Paging extends Component {
 
   renderTemplate() {
     const currentPage = parseInt(this.props.currentPage);
-
+    const lastPage = this.props.lastPage;
     return /*html*/ `
-            <section>
-                <button class="prev">Prev</button>
-                <span>page: ${currentPage}</span>
-                <button class="next">Next</button>
-            </section>
-        `;
+      <section class="paging">
+          <button class="prev" ${currentPage === 1 ? 'disabled' : ''}>Prev</button>
+          <span>page: ${currentPage}</span>
+          <button class="next" ${lastPage ? 'disabled' : ''}>Next</button>
+      </section>
+    `;
   }
 }
 

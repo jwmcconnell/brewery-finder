@@ -16,13 +16,15 @@ class App extends Component {
     const breweryList = new BreweryList({ breweries: [] });
     const map = new Map({ breweries: [] });
     const search = new Search();
-    const paging = new Paging({ currentPage: 1 });
+    const paging = new Paging({ currentPage: 1, lastPage: false });
 
     function loadBreweries() {
       const queryProps = hashStorage.get();
       breweryApi.getBreweries(queryProps)
         .then(breweries => {
+          const lastPage = breweries.length < 10;
           breweryList.update({ breweries });
+          paging.update({ currentPage: queryProps.page, lastPage });
           map.update({ breweries });
         });
     }
@@ -39,8 +41,8 @@ class App extends Component {
     dom.prepend(header.render());
 
     listContainer.appendChild(search.render());
-    listContainer.appendChild(paging.render());
     listContainer.appendChild(breweryList.render());
+    listContainer.appendChild(paging.render());
 
     main.appendChild(map.render());
 
