@@ -3,6 +3,7 @@ import Header from './Header.js';
 import BreweryList from './BreweryList.js';
 import Map from './Map.js';
 import Search from './Search.js';
+import Paging from './Paging.js';
 
 import hashStorage from '../services/hash-storage.js';
 import breweryApi from '../services/brewery-api.js';
@@ -15,6 +16,7 @@ class App extends Component {
     const breweryList = new BreweryList({ breweries: [] });
     const map = new Map({ breweries: [] });
     const search = new Search();
+    const paging = new Paging({ currentPage: 1 });
 
     function loadBreweries() {
       const queryProps = hashStorage.get();
@@ -37,6 +39,7 @@ class App extends Component {
     dom.prepend(header.render());
 
     listContainer.appendChild(search.render());
+    listContainer.appendChild(paging.render());
     listContainer.appendChild(breweryList.render());
 
     main.appendChild(map.render());
