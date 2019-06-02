@@ -3,6 +3,7 @@ import Component from './Component.js';
 class BreweryItem extends Component {
   renderTemplate() {
     const brewery = this.props.brewery;
+    const label = this.props.label;
     return /*html*/ `
       <li>
         <h2>${brewery.name}</h2>
@@ -23,6 +24,9 @@ class BreweryItem extends Component {
           <span>${brewery.street}</span>
         </section>
         <a href="${brewery.website_url}">Website</a>
+        <section class="map-label">
+          <span>${label}</span>
+        </section>
       </li>
     `;
   }

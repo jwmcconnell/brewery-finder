@@ -8,8 +8,12 @@ class BreweryList extends Component {
 
     const breweries = this.props.breweries;
 
+    let labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    let labelIndex = 0;
+
     breweries.forEach(brewery => {
-      const breweryItem = new BreweryItem({ brewery });
+      let label = labels[labelIndex++];
+      const breweryItem = new BreweryItem({ brewery, label });
       dom.appendChild(breweryItem.render());
     });
 

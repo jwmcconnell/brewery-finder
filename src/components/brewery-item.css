@@ -3,4 +3,13 @@ ul li {
   border-radius: 3px;
   padding: 3px;
   margin: 5px;
+  position: relative;
+}
+
+.map-label {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 5px;
+  font-size: 1.2em;
 }
