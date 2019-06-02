@@ -22,7 +22,7 @@ test('Makes Brewery Item from template', assert => {
     'tag_list': []
   };
 
-  const breweryItem = new BreweryItem({ brewery });
+  const breweryItem = new BreweryItem({ brewery, label: 'A' });
   const rendered = breweryItem.renderTemplate();
 
   assert.htmlEqual(rendered, /*html*/`
@@ -44,7 +44,10 @@ test('Makes Brewery Item from template', assert => {
         <span>Address:</span>
         <span>811 SW Salmon St</span>
       </section>
-      <a href="http://www.thearlingtonclub.com">Website</a>
+      <a href="http://www.thearlingtonclub.com" class=>Website</a>
+      <section class="map-label">
+          <span>A</span>
+        </section>
     </li>
   `);
 }); 

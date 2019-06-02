@@ -23,7 +23,7 @@ class BreweryItem extends Component {
           <span>Address:</span>
           <span>${brewery.street}</span>
         </section>
-        <a href="${brewery.website_url}">Website</a>
+        <a href="${brewery.website_url}" class=${!brewery.website_url ? 'hidden' : ''}>Website</a>
         <section class="map-label">
           <span>${label}</span>
         </section>
