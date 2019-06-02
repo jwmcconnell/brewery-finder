@@ -4,6 +4,7 @@ import BreweryList from './BreweryList.js';
 import Map from './Map.js';
 import Search from './Search.js';
 
+import hashStorage from '../services/hash-storage.js';
 import breweryApi from '../services/brewery-api.js';
 
 class App extends Component {
@@ -16,8 +17,8 @@ class App extends Component {
     const search = new Search();
 
     function loadBreweries() {
-
-      breweryApi.getBreweries()
+      const queryProps = hashStorage.get();
+      breweryApi.getBreweries(queryProps)
         .then(breweries => {
           breweryList.update({ breweries });
           map.update({ breweries });

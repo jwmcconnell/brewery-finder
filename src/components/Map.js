@@ -1,4 +1,25 @@
+
 import Component from './Component.js';
+
+function geocodeAddress(geocoder, resultsMap, brewery, labels, labelIndex, latlngbounds) {
+  var address = `${brewery.street}, ${brewery.city}, ${brewery.state}`;
+
+  geocoder.geocode({ 'address': address }, function(results, status) {
+    if(status === 'OK') {
+      // resultsMap.setCenter(results[0].geometry.location);
+      let marker = new google.maps.Marker({
+        map: resultsMap,
+        position: results[0].geometry.location,
+        label: labels[labelIndex % labels.length]
+      });
+      latlngbounds.extend({ lat: marker.getPosition().lat(), lng: marker.getPosition().lng() });
+      resultsMap.setCenter(latlngbounds.getCenter());
+      resultsMap.fitBounds(latlngbounds);
+    } else {
+      alert('Geocode was not successful for the following reason: ' + status);
+    }
+  });
+}
 
 class Map extends Component {
   render() {
@@ -11,28 +32,32 @@ class Map extends Component {
     let labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     let labelIndex = 0;
 
-    let map = new google.maps.Map(dom.querySelector('.map'), {
-      zoom: 8
-    });
+    let map = new google.maps.Map(dom.querySelector('.map'));
 
     breweries.forEach(brewery => {
-      let marker = new google.maps.Marker({
-        position: {
-          lat: parseFloat(brewery.latitude),
-          lng: parseFloat(brewery.longitude)
-        },
-        label: labels[labelIndex++ % labels.length],
-        map: map,
-        title: brewery.name,
-        gestureHandling: 'cooperative'
-      });
+      brewery.latitude = parseFloat(brewery.latitude);
+      brewery.longitude = parseFloat(brewery.longitude);
+      var geocoder = new google.maps.Geocoder();
 
-      marker.addListener('click', function() {
-        map.setZoom(5);
-        map.setCenter(marker.getPosition());
-      });
+      if(brewery.latitude && brewery.longitude) {
 
-      latlngbounds.extend(marker.position);
+        let marker = new google.maps.Marker({
+          position: {
+            lat: parseFloat(brewery.latitude),
+            lng: parseFloat(brewery.longitude)
+          },
+          label: labels[labelIndex % labels.length],
+          map: map,
+          title: brewery.name,
+          gestureHandling: 'cooperative'
+        });
+
+        latlngbounds.extend(marker.position);
+
+      } else if(brewery.street) {
+        geocodeAddress(geocoder, map, brewery, labels, labelIndex, latlngbounds);
+      }
+      labelIndex++;
     });
 
     map.setCenter(latlngbounds.getCenter());
