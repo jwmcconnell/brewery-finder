@@ -7,6 +7,8 @@ body {
   overflow-x: hidden;
   overflow-y: hidden;
   height: 100vh;
+  /* display: flex;
+  flex-direction: column; */
 }
 
 header {
@@ -14,18 +16,18 @@ header {
   background: black;
   color: lightcyan;
   text-align: center;
-  height: 10%;
+  height: 60px;
 }
 
 header h1 {
   margin: 0;
   font-size: 2.5em;
-}
+  line-height: 60px}
 
 main {
   display: flex;
   position: relative;
-  height: 90%;
+  height: calc(100vh - 60px);
 }
 
 #app, #app .main-container {
